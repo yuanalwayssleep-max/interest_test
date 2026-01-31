@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>趣味职场测试系统 - 首页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    
+    .logo-text {
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .header h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .content {
+      padding: 40px;
+      flex: 1;
+    }
+    
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .intro h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .intro p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .test-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid #eaeaea;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-color: #d0d0d0;
+    }
+    
+    .card-image {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    
+    .card-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+    }
+    
+    .card-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .card-description {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    
+    .card-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      text-align: center;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(37, 117, 252, 0.2);
+    }
+    
+    .card-button:hover {
+      box-shadow: 0 6px 15px rgba(37, 117, 252, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      border-top: 1px solid #eaeaea;
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 30px 20px;
+      }
+      
+      .header h1 {
+        font-size: 26px;
+      }
+      
+      .content {
+        padding: 30px 20px;
+      }
+      
+      .test-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .logo {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .logo-text {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-text">FT</div>
+      </div>
+      <h1>趣味职场测试系统</h1>
+      <p>探索自我，了解职场，提升职业竞争力</p>
+    </div>
+    
+    <div class="content">
+      <div class="intro">
+        <h2>欢迎来到趣味职场测试系统</h2>
+        <p>这是一个专为职场人士打造的趣味测试平台，通过有趣的测试和工具，帮助您更好地了解自己的职场性格、应对职场挑战，以及探索职业发展方向。选择下方任意测试，开启您的职场自我探索之旅！</p>
+      </div>
+      
+      <div class="test-cards">
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
+          <div class="card-content">
+            <h3 class="card-title">职场性格测试</h3>
+            <p class="card-description">了解您的职场性格类型，发现自己的职场优势和潜在挑战，找到最适合的工作方式和环境。</p>
+            <a href="workplacePersonalityTest.html" class="card-button">开始测试</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
+          <div class="card-content">
+            <h3 class="card-title">职场问题同事应对话术</h3>
+            <p class="card-description">面对职场中的各类难缠同事，这里有专业的应对话术，让您在职场交流中游刃有余。</p>
+            <a href="workplaceColleagueTalkingSkillsQuery.html" class="card-button">查询话术</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
+          <div class="card-content">
+            <h3 class="card-title">IP测试</h3>
+            <p class="card-description">探索您的职场IP特质，了解如何打造个人品牌，在职场中脱颖而出。</p>
+            <a href="ppmt_iptest.html" class="card-button">开始测试</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
+          <div class="card-content">
+            <h3 class="card-title">答案之书求职版</h3>
+            <p class="card-description">在求职过程中遇到困惑？让神奇的答案之书为您指点迷津，提供求职建议和灵感。</p>
+            <a href="answerBookJobVersion.html" class="card-button">寻求答案</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>© 2026 趣味职场测试系统 | 助力职场人士成长的趣味平台</p>
+    </div>
+  </div>
+</body>
+</html>
