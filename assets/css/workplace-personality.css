@@ -2,14 +2,7 @@
  * 职场性格测试样式
  */
 
-/* 标题样式 */
-.subtitle {
-  text-align: center;
-  color: #ff69b4;
-  font-size: 14px;
-  margin-bottom: 30px;
-}
-
+/* 删除与common.css冲突的.subtitle样式 */
 /* 进度条样式 */
 .progress-bar {
   width: 100%;

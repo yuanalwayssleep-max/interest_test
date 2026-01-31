@@ -22,7 +22,7 @@
   position: absolute;
   top: -12px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* 水平居中定位 */
   display: flex;
   gap: 8px;
 }
@@ -30,7 +30,7 @@
 .top-decoration span {
   width: 24px;
   height: 24px;
-  background: linear-gradient(135deg, #ffb3d9 0%, #ff9ec7 100%);
+  background: linear-gradient(135deg, #ffb3d9 0%, #ff9ec7 100%); /* 粉色渐变背景 */
   border-radius: 50%;
   box-shadow: 0 3px 10px rgba(255, 105, 180, 0.3);
 }
@@ -42,12 +42,12 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 8px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* 在小屏幕上允许换行 */
 }
 
 .answer-book-title {
-  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-  -webkit-background-clip: text;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%); /* 标题文字渐变色 */
+  -webkit-background-clip: text; /* 使渐变应用于文字 */
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-size: 28px;
@@ -70,7 +70,7 @@
   margin-bottom: 25px;
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.5px; /* 字间距增加可读性 */
 }
 
 /* 输入区域样式 */
@@ -86,21 +86,21 @@
   border: 2px solid #ffc0cb;
   border-radius: 12px;
   outline: none;
-  transition: all 0.3s;
+  transition: all 0.3s; /* 平滑过渡效果 */
   background: rgba(255, 240, 245, 0.5);
   color: #ff1493;
   font-weight: 500;
 }
 
 .page-input::placeholder {
-  color: #ffb3d9;
+  color: #ffb3d9; /* 占位符文字颜色 */
 }
 
 .page-input:focus {
   border-color: #ff69b4;
   background: white;
   box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
-  transform: translateY(-1px);
+  transform: translateY(-1px); /* 聚焦时轻微上移效果 */
 }
 
 /* 按钮样式 */
@@ -117,8 +117,8 @@
   font-weight: bold;
   box-shadow: 0 6px 18px rgba(255, 105, 180, 0.3);
   position: relative;
-  overflow: hidden;
-  touch-action: manipulation;
+  overflow: hidden; /* 隐藏波纹效果溢出部分 */
+  touch-action: manipulation; /* 优化移动端触摸体验 */
 }
 
 .query-button::before {
@@ -131,16 +131,16 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+  transition: width 0.6s, height 0.6s; /* 波纹扩散动画 */
 }
 
 .query-button:active {
-  transform: scale(0.98);
+  transform: scale(0.98); /* 点击时缩小效果 */
 }
 
 .query-button:active::before {
   width: 300px;
-  height: 300px;
+  height: 300px; /* 点击时波纹扩散 */
 }
 
 /* 错误提示 */
@@ -157,15 +157,15 @@
   padding: 20px;
   background: linear-gradient(135deg, #fff0f5 0%, #ffe4f0 100%);
   border-radius: 18px;
-  display: none;
-  animation: fadeIn 0.5s;
+  display: none; /* 默认隐藏 */
+  animation: fadeIn 0.5s; /* 淡入动画 */
   text-align: left;
   border: 2px solid #ffc0cb;
   box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15);
 }
 
 .answer-box.show {
-  display: block;
+  display: block; /* 显示答案区域 */
 }
 
 .answer-number {
@@ -182,7 +182,7 @@
 
 .answer-number::before,
 .answer-number::after {
-  content: '✨';
+  content: '✨'; /* 装饰性星星图标 */
   font-size: 12px;
 }
 
@@ -199,11 +199,11 @@
   box-shadow: 0 3px 12px rgba(255, 105, 180, 0.1);
   border: 2px solid #ffe4f0;
   position: relative;
-  word-break: break-all;
+  word-break: break-all; /* 防止长文本溢出 */
 }
 
 .answer-text::before {
-  content: '"';
+  content: '"'; /* 左引号装饰 */
   position: absolute;
   top: 5px;
   left: 10px;
@@ -213,7 +213,7 @@
 }
 
 .answer-text::after {
-  content: '"';
+  content: '"'; /* 右引号装饰 */
   position: absolute;
   bottom: 5px;
   right: 10px;
@@ -228,7 +228,7 @@
   padding: 18px;
   border-radius: 12px;
   margin-top: 15px;
-  border-left: 4px solid #ff69b4;
+  border-left: 4px solid #ff69b4; /* 左侧边框强调 */
   box-shadow: 0 3px 12px rgba(255, 105, 180, 0.1);
 }
 
@@ -245,13 +245,13 @@
 .interpretation-content {
   color: #666;
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.8; /* 增加行高提高可读性 */
 }
 
 /* 标签样式 */
 .tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* 允许标签换行 */
   gap: 8px;
   margin-top: 15px;
   justify-content: center;
@@ -271,7 +271,7 @@
 .decoration {
   font-size: 48px;
   margin-bottom: 15px;
-  animation: bounce 2s ease-in-out infinite;
+  animation: bounce 2s ease-in-out infinite; /* 弹跳动画 */
 }
 
 /* 底部装饰 */
@@ -285,22 +285,22 @@
 
 .bottom-decoration span {
   font-size: 18px;
-  animation: twinkle 1.5s ease-in-out infinite;
+  animation: twinkle 1.5s ease-in-out infinite; /* 闪烁动画 */
 }
 
 .bottom-decoration span:nth-child(2) {
-  animation-delay: 0.3s;
+  animation-delay: 0.3s; /* 错开动画时间 */
 }
 
 .bottom-decoration span:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: 0.6s; /* 错开动画时间 */
 }
 
 /* 动画效果 */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(10px); /* 从下往上淡入 */
   }
   to {
     opacity: 1;
@@ -310,25 +310,25 @@
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-8px); } /* 上下弹跳效果 */
 }
 
 @keyframes twinkle {
   0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
+  50% { opacity: 1; transform: scale(1.2); } /* 闪烁缩放效果 */
 }
 
 /* 背景样式 */
 .answer-book-bg {
   font-family: 'Microsoft YaHei', Arial, sans-serif;
-  background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 25%, #ffd4e8 50%, #ffc8e0 75%, #ffb3d9 100%);
+  background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 25%, #ffd4e8 50%, #ffc8e0 75%, #ffb3d9 100%); /* 多色渐变背景 */
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden; /* 防止横向溢出 */
 }
 
 /* 背景装饰元素 */
@@ -337,11 +337,11 @@
   position: absolute;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%); /* 径向渐变 */
   border-radius: 50%;
   top: -150px;
   right: -150px;
-  animation: float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite; /* 漂浮动画 */
 }
 
 .answer-book-bg::after {
@@ -353,59 +353,59 @@
   border-radius: 50%;
   bottom: -100px;
   left: -100px;
-  animation: float 8s ease-in-out infinite reverse;
+  animation: float 8s ease-in-out infinite reverse; /* 反向漂浮动画 */
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(5deg); }
+  50% { transform: translateY(-15px) rotate(5deg); } /* 漂浮并轻微旋转 */
 }
 
 /* 响应式设计 */
 @media (max-width: 480px) {
   .answer-book-container {
-    padding: 25px 18px;
+    padding: 25px 18px; /* 小屏幕减少内边距 */
   }
 
   .answer-book-title {
-    font-size: 24px;
+    font-size: 24px; /* 小屏幕减小标题字体 */
   }
 
   .job-tag {
     font-size: 14px;
-    padding: 5px 14px;
+    padding: 5px 14px; /* 小屏幕减小标签尺寸 */
   }
 
   .answer-text {
     font-size: 18px;
-    padding: 18px 12px;
+    padding: 18px 12px; /* 小屏幕减小答案文本内边距 */
   }
 
   .interpretation-content {
-    font-size: 13px;
+    font-size: 13px; /* 小屏幕减小解读文本字体 */
   }
 }
 
 /* 小屏幕优化 */
 @media (max-width: 360px) {
   .answer-book-bg {
-    padding: 10px;
+    padding: 10px; /* 更小屏幕进一步减少外边距 */
   }
 
   .answer-book-container {
     padding: 20px 15px;
-    border-radius: 20px;
+    border-radius: 20px; /* 更小屏幕减小圆角 */
   }
 
   .answer-book-title {
-    font-size: 22px;
+    font-size: 22px; /* 更小屏幕进一步减小标题 */
   }
 
   .decoration {
-    font-size: 40px;
+    font-size: 40px; /* 更小屏幕减小装饰图标 */
   }
 
   .answer-text {
-    font-size: 17px;
+    font-size: 17px; /* 更小屏幕减小答案文本 */
   }
 }

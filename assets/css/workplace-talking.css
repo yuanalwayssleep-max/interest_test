@@ -1,5 +1,5 @@
 /**
- * 职场问题同事应对话术查询器样式
+ * 职场问题同事应对话术查询器样式 - 淡粉色主题
  */
 
 /* 主容器样式 */
@@ -7,9 +7,9 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #fff9fb; /* 淡粉色背景 */
   border-radius: 15px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 25px rgba(255, 182, 193, 0.2); /* 粉色阴影 */
 }
 
 /* 头部样式 */
@@ -17,35 +17,17 @@
   text-align: center;
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-}
-
-.logo {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  border-radius: 50%;
-  margin: 0 auto 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3);
-}
-
-.logo-text {
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
+  border-bottom: 1px solid #ffe0e6; /* 淡粉色边框 */
 }
 
 .header h1 {
   font-size: 24px;
-  color: #333;
+  color: #ff6b8b; /* 粉色标题 */
   margin-bottom: 8px;
 }
 
 .header p {
-  color: #777;
+  color: #ff8fa3; /* 淡粉色副标题 */
   font-size: 14px;
 }
 
@@ -62,7 +44,7 @@
 .form-group label {
   display: block;
   margin-bottom: 10px;
-  color: #333;
+  color: #ff6b8b; /* 粉色标签 */
   font-weight: 500;
   font-size: 16px;
 }
@@ -71,7 +53,7 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  background-color: #3498db;
+  background-color: #ff6b8b; /* 粉色背景 */
   color: white;
   border-radius: 50%;
   text-align: center;
@@ -85,43 +67,43 @@
 .select-wrapper {
   position: relative;
   border-radius: 8px;
-  background-color: #f5f7fa;
+  background-color: #fff0f5; /* 淡粉色背景 */
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(255, 182, 193, 0.1); /* 粉色阴影 */
 }
 
 .select-wrapper.active {
-  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); /* 粉色阴影 */
 }
 
 select {
   width: 100%;
   padding: 14px 16px;
-  border: 2px solid #e0e6ed;
+  border: 2px solid #ffd1dc; /* 淡粉色边框 */
   border-radius: 8px;
   background-color: transparent;
   appearance: none;
   font-size: 15px;
-  color: #333;
+  color: #ff6b8b; /* 粉色文字 */
   cursor: pointer;
   outline: none;
   transition: all 0.3s ease;
 }
 
 select:focus {
-  border-color: #3498db;
+  border-color: #ff69b4; /* 深粉色边框 */
 }
 
 select:disabled {
-  background-color: #f1f1f1;
-  color: #999;
+  background-color: #fff5f8; /* 更淡的粉色背景 */
+  color: #ffb6c1; /* 淡粉色文字 */
   cursor: not-allowed;
 }
 
 .select-wrapper::after {
   content: '▼';
   font-size: 12px;
-  color: #3498db;
+  color: #ff69b4; /* 深粉色箭头 */
   position: absolute;
   right: 16px;
   top: 50%;
@@ -135,11 +117,11 @@ select:disabled {
 }
 
 /* 查询按钮样式 */
-.query-btn {
+.query-btn {  
   display: block;
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  background: linear-gradient(135deg, #ff8fa3, #ff6b8b); /* 粉色渐变 */
   color: white;
   border: none;
   border-radius: 8px;
@@ -148,21 +130,21 @@ select:disabled {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-bottom: 30px;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3); /* 粉色阴影 */
 }
 
 .query-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4); /* 粉色阴影 */
 }
 
 .query-btn:active:not(:disabled) {
   transform: translateY(1px);
-  box-shadow: 0 2px 10px rgba(52, 152, 219, 0.4);
+  box-shadow: 0 2px 10px rgba(255, 105, 180, 0.4); /* 粉色阴影 */
 }
 
 .query-btn:disabled {
-  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  background: linear-gradient(135deg, #ffc1cc, #ffb6c1); /* 淡粉色渐变 */
   cursor: not-allowed;
   box-shadow: none;
   opacity: 0.7;
@@ -170,12 +152,12 @@ select:disabled {
 
 /* 结果框样式 */
 .result-box {
-  background-color: #f8fafc;
+  background-color: #fff9fb; /* 淡粉色背景 */
   border-radius: 12px;
   padding: 0;
   margin-top: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e0e6ed;
+  box-shadow: 0 5px 20px rgba(255, 182, 193, 0.1); /* 粉色阴影 */
+  border: 1px solid #ffd1dc; /* 淡粉色边框 */
   overflow: hidden;
   max-height: 0;
   opacity: 0;
@@ -192,10 +174,10 @@ select:disabled {
 .result-title {
   font-size: 20px;
   font-weight: bold;
-  color: #3498db;
+  color: #ff6b8b; /* 粉色标题 */
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #e0e6ed;
+  border-bottom: 2px solid #ffd1dc; /* 淡粉色边框 */
 }
 
 /* 场景信息样式 */
@@ -205,7 +187,7 @@ select:disabled {
 
 .scenario-info h3 {
   font-size: 16px;
-  color: #3498db;
+  color: #ff6b8b; /* 粉色标题 */
   margin-bottom: 10px;
 }
 
@@ -216,8 +198,8 @@ select:disabled {
 }
 
 .quote {
-  background-color: #edf2f7;
-  border-left: 4px solid #3498db;
+  background-color: #fff0f5; /* 淡粉色背景 */
+  border-left: 4px solid #ff8fa3; /* 粉色边框 */
   padding: 12px 15px;
   color: #444;
   font-style: italic;
@@ -226,8 +208,8 @@ select:disabled {
 }
 
 .reality {
-  background-color: #fff8dc;
-  border-left: 4px solid #f1c40f;
+  background-color: #fff0f5; /* 淡粉色背景 */
+  border-left: 4px solid #ffb6c1; /* 粉色边框 */
   padding: 12px 15px;
   color: #444;
   margin: 10px 0;
@@ -237,21 +219,21 @@ select:disabled {
 /* 应对话术样式 */
 .responses h3 {
   font-size: 16px;
-  color: #3498db;
+  color: #ff6b8b; /* 粉色标题 */
   margin-bottom: 15px;
 }
 
 .response-item {
   background-color: white;
-  border: 1px solid #e0e6ed;
+  border: 1px solid #ffd1dc; /* 淡粉色边框 */
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 15px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 10px rgba(255, 182, 193, 0.1); /* 粉色阴影 */
 }
 
 .response-item h4 {
-  color: #3498db;
+  color: #ff6b8b; /* 粉色标题 */
   margin-bottom: 10px;
   font-size: 15px;
 }
@@ -266,7 +248,7 @@ select:disabled {
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: #95a5a6;
+  color: #ffb6c1; /* 淡粉色文字 */
 }
 
 .empty-state .icon {
@@ -313,4 +295,9 @@ select:disabled {
   .response-item {
     padding: 12px;
   }
+}
+
+/* 页面背景 */
+body {
+  background-color: #fff0f5; /* 淡粉色背景 */
 }
