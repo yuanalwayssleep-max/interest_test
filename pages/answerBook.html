@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>答案之书</title>
+  <!-- 引入通用样式 -->
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <!-- 引入页面特定样式 -->
+  <link rel="stylesheet" href="../assets/css/answer-book.css">
+  <style id="customStyles">
+  </style>
+</head>
+<body class="answer-book-bg">
+  <!-- 内容容器 -->
+  <div id="content-container" class="answer-book-container-wrapper">
+    <!-- 内容将通过JavaScript动态生成 -->
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>正在加载答案之书...</p>
+    </div>
+  </div>
+
+  <!-- 引入配置文件 -->
+  <script src="../js/config/answer-book-versions.js"></script>
+  
+  <script>
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+      // 从URL参数获取版本ID
+      const urlParams = new URLSearchParams(window.location.search);
+      const versionId = urlParams.get('version') || 'job'; // 默认为求职版
+      
+      // 获取版本配置
+      const versionConfig = answerBookVersions[versionId];
+      
+      if (!versionConfig) {
+        showError('未找到指定版本的答案之书');
+        return;
+      }
+      
+      // 设置页面标题
+      document.title = versionConfig.title;
+      
+      // 应用自定义样式
+      if (versionConfig.customStyles) {
+        document.getElementById('customStyles').textContent = versionConfig.customStyles;
+      }
+      
+      // 生成页面内容
+      generateAnswerBook(versionConfig);
+      
+      // 加载数据文件
+      loadScript(`../js/data/${versionConfig.dataFile}.js`, function() {
+        // 数据加载完成后，加载主脚本
+        loadScript('../assets/js/answer-book.js', function() {
+          // 初始化答案之书功能
+          if (typeof AnswerBook !== 'undefined' && AnswerBook.init) {
+            AnswerBook.init(); // 手动初始化AnswerBook
+          }
+          
+          // 执行额外脚本
+          if (versionConfig.extraScripts) {
+            try {
+              eval(versionConfig.extraScripts);
+            } catch (error) {
+              console.error('执行额外脚本时出错:', error);
+            }
+          }
+        });
+      });
+    });
+    
+    // 生成答案之书HTML结构
+    function generateAnswerBook(config) {
+      const container = document.getElementById('content-container');
+      
+      // 生成底部装饰HTML
+      let bottomDecorationsHTML = '';
+      if (config.bottomDecorations && config.bottomDecorations.length) {
+        bottomDecorationsHTML = config.bottomDecorations.map(deco => `<span>${deco}</span>`).join('');
+      } else {
+        bottomDecorationsHTML = '<span>✨</span><span>💫</span><span>⭐</span>';
+      }
+      
+      // 生成HTML结构
+      container.innerHTML = `
+        <div class="answer-book-container">
+          <div class="top-decoration">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          
+          <div class="decoration">${config.decorationEmoji}</div>
+          <div class="title-wrapper">
+            <h1 class="answer-book-title">答案之书</h1>
+            <span class="job-tag">${config.type}</span>
+          </div>
+          <p class="subtitle">共${config.totalPages}页</p>
+          
+          <div class="input-group">
+            <input type="number" id="pageInput" class="page-input" placeholder="请输入1-${config.totalPages}之间的数字" min="1" max="${config.totalPages}" inputmode="numeric">
+          </div>
+          
+          <button id="queryButton" class="query-button">
+            <span style="position: relative; z-index: 1;">✨ 查询答案 ✨</span>
+          </button>
+          
+          <div id="error" class="error-message"></div>
+          
+          <div id="answerBox" class="answer-box">
+            <div class="answer-number" id="answerNumber"></div>
+            <div class="answer-text" id="answerText"></div>
+            <div class="interpretation">
+              <div class="interpretation-title">
+                <span>${config.interpretationIcon}</span>
+                <span>答案解读</span>
+              </div>
+              <div class="interpretation-content" id="interpretationText"></div>
+            </div>
+            <div class="tags" id="tags"></div>
+          </div>
+
+          <div class="bottom-decoration">
+            ${bottomDecorationsHTML}
+          </div>
+        </div>
+      `;
+    }
+    
+    // 显示错误信息
+    function showError(message) {
+      const container = document.getElementById('content-container');
+      container.innerHTML = `
+        <div style="text-align: center; padding: 50px; color: #ff6b8b;">
+          <h2>出错了</h2>
+          <p>${message}</p>
+          <a href="../index.html" style="color: #ff6b8b; text-decoration: underline; margin-top: 20px; display: inline-block;">返回首页</a>
+        </div>
+      `;
+    }
+    
+    // 动态加载脚本
+    function loadScript(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = callback;
+      script.onerror = function() {
+        showError(`无法加载脚本: ${src}`);
+      };
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+</html>

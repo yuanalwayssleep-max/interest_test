@@ -118,7 +118,7 @@ const AnswerBook = (function() {
   };
 })();
 
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', function() {
-  AnswerBook.init();
-});
+// 删除这部分代码，因为我们已经在HTML文件中手动调用了init
+// document.addEventListener('DOMContentLoaded', function() {
+//   AnswerBook.init();
+// });

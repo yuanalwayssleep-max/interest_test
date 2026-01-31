@@ -3,11 +3,50 @@
  * 包含首页导航按钮和布局的样式定义
  */
 
+/* 分类部分样式 */
+.category-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 192, 203, 0.3);
+}
+
+.category-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.category-icon {
+  font-size: 24px;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+  color: #333;
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+
 /* 首页按钮容器样式 */
 .buttons-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
@@ -52,14 +91,32 @@
   left: 100%;
 }
 
-/* 恋爱版按钮特殊样式 */
-.love-button {
-  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+/* 不同赛道按钮样式 */
+.workplace-button {
+  background: linear-gradient(135deg, #5c9eff 0%, #3b7dff 100%);
+  box-shadow: 0 4px 10px rgba(59, 125, 255, 0.2);
 }
 
-.love-button:hover {
-  box-shadow: 0 6px 15px rgba(255, 20, 147, 0.4);
+.workplace-button:hover {
+  box-shadow: 0 6px 15px rgba(59, 125, 255, 0.3);
+}
+
+.toy-button {
+  background: linear-gradient(135deg, #ff9a5c 0%, #ff7b3b 100%);
+  box-shadow: 0 4px 10px rgba(255, 123, 59, 0.2);
+}
+
+.toy-button:hover {
+  box-shadow: 0 6px 15px rgba(255, 123, 59, 0.3);
+}
+
+.emotion-button {
+  background: linear-gradient(135deg, #ff5c8a 0%, #ff3377 100%);
+  box-shadow: 0 4px 10px rgba(255, 51, 119, 0.2);
+}
+
+.emotion-button:hover {
+  box-shadow: 0 6px 15px rgba(255, 51, 119, 0.3);
 }
 
 /* 响应式设计调整 */
@@ -68,6 +125,16 @@
     padding: 14px 16px;
     font-size: 16px;
   }
+  
+  .category-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  
+  .category-title {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 375px) {
@@ -75,4 +142,45 @@
     padding: 12px 16px;
     font-size: 15px;
   }
+  
+  .category-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+  
+  .category-title {
+    font-size: 16px;
+  }
+  
+  .category-header {
+    margin-bottom: 12px;
+  }
+  
+  .category-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+}
+
+/* 添加动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.category-section {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.category-section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.category-section:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.category-section:nth-child(3) {
+  animation-delay: 0.5s;
 }
