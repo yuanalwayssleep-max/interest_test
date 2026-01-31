@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>答案之书 - 恋爱版</title>
+  <!-- 引入通用样式 -->
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <!-- 引入页面特定样式 -->
+  <link rel="stylesheet" href="../assets/css/answer-book.css">
+  <!-- 恋爱版特定样式覆盖 -->
+  <style>
+    /* 恋爱版特有的颜色和样式 */
+    .answer-book-bg {
+      background: linear-gradient(135deg, #ffe6f2 0%, #ffd1e8 25%, #ffb6d9 50%, #ff9ecb 75%, #ff85c2 100%); /* 更浓的粉色渐变背景 */
+    }
+    
+    .answer-book-container {
+      box-shadow: 0 15px 40px rgba(255, 20, 147, 0.25), 
+                0 0 0 1px rgba(255, 105, 180, 0.4);
+      border: 2px solid rgba(255, 105, 180, 0.4);
+    }
+    
+    .decoration {
+      color: #ff1493; /* 深粉色爱心 */
+    }
+    
+    .answer-book-title {
+      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .job-tag {
+      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    }
+    
+    .query-button {
+      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    }
+    
+    .interpretation-title span:first-child {
+      color: #ff1493;
+    }
+    
+    /* 添加爱心漂浮效果 */
+    .floating-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff69b4"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+      opacity: 0.5;
+      animation: floatHeart 15s linear infinite;
+    }
+    
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) scale(0.5) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.5;
+      }
+      90% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-100px) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* 增强爱情主题的视觉效果 */
+    .answer-text::before,
+    .answer-text::after {
+      color: #ff85c2; /* 更改引号颜色 */
+    }
+    
+    .answer-number::before,
+    .answer-number::after {
+      content: '❤️'; /* 将星星改为爱心 */
+    }
+  </style>
+</head>
+<body class="answer-book-bg">
+  <!-- 添加漂浮爱心背景 -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+  
+  <!-- 直接使用完整的HTML结构，不依赖模板加载 -->
+  <div class="answer-book-container">
+    <div class="top-decoration">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <div class="decoration">❤️</div>
+    <div class="title-wrapper">
+      <h1 class="answer-book-title">答案之书</h1>
+      <span class="job-tag">恋爱</span>
+    </div>
+    <p class="subtitle">共412页</p>
+    
+    <div class="input-group">
+      <input type="number" id="pageInput" class="page-input" placeholder="请输入1-412之间的数字" min="1" max="412" inputmode="numeric">
+    </div>
+    
+    <button id="queryButton" class="query-button">
+      <span style="position: relative; z-index: 1;">✨ 查询答案 ✨</span>
+    </button>
+    
+    <div id="error" class="error-message"></div>
+    
+    <div id="answerBox" class="answer-box">
+      <div class="answer-number" id="answerNumber"></div>
+      <div class="answer-text" id="answerText"></div>
+      <div class="interpretation">
+        <div class="interpretation-title">
+          <span>💘</span>
+          <span>答案解读</span>
+        </div>
+        <div class="interpretation-content" id="interpretationText"></div>
+      </div>
+      <div class="tags" id="tags"></div>
+    </div>
+
+    <div class="bottom-decoration">
+      <span>❤️</span>
+      <span>💕</span>
+      <span>💓</span>
+    </div>
+  </div>
+
+  <!-- 引入恋爱版数据和脚本 -->
+  <script src="../js/data/answerBookLoveData.js"></script>
+  <script src="../assets/js/answer-book.js"></script>
+  
+  <!-- 添加漂浮爱心效果的脚本 -->
+  <script>
+    // 创建漂浮爱心
+    function createFloatingHearts() {
+      const container = document.getElementById('floatingHearts');
+      const heartCount = 15; // 爱心数量
+      
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        
+        // 随机位置
+        heart.style.left = Math.random() * 100 + '%';
+        
+        // 随机大小
+        const size = Math.random() * 20 + 10;
+        heart.style.width = size + 'px';
+        heart.style.height = size + 'px';
+        
+        // 随机动画延迟
+        heart.style.animationDelay = Math.random() * 15 + 's';
+        
+        // 随机动画持续时间
+        heart.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        
+        container.appendChild(heart);
+      }
+    }
+    
+    // 页面加载完成后创建爱心
+    document.addEventListener('DOMContentLoaded', createFloatingHearts);
+  </script>
+</body>
+</html>

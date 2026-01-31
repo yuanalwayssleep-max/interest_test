@@ -10,47 +10,53 @@
   <link rel="stylesheet" href="../assets/css/answer-book.css">
 </head>
 <body class="answer-book-bg">
-  <!-- 模板内容将被加载到这里 -->
-  <div id="template-container"></div>
+  <!-- 直接使用完整的HTML结构，不依赖模板加载 -->
+  <div class="answer-book-container">
+    <div class="top-decoration">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <div class="decoration">🌸</div>
+    <div class="title-wrapper">
+      <h1 class="answer-book-title">答案之书</h1>
+      <span class="job-tag">求职</span>
+    </div>
+    <p class="subtitle">共412页</p>
+    
+    <div class="input-group">
+      <input type="number" id="pageInput" class="page-input" placeholder="请输入1-412之间的数字" min="1" max="412" inputmode="numeric">
+    </div>
+    
+    <button id="queryButton" class="query-button">
+      <span style="position: relative; z-index: 1;">✨ 查询答案 ✨</span>
+    </button>
+    
+    <div id="error" class="error-message"></div>
+    
+    <div id="answerBox" class="answer-box">
+      <div class="answer-number" id="answerNumber"></div>
+      <div class="answer-text" id="answerText"></div>
+      <div class="interpretation">
+        <div class="interpretation-title">
+          <span>💖</span>
+          <span>答案解读</span>
+        </div>
+        <div class="interpretation-content" id="interpretationText"></div>
+      </div>
+      <div class="tags" id="tags"></div>
+    </div>
 
-  <!-- 引入模板加载器 -->
-  <script src="../assets/js/template-loader.js"></script>
-  
-  <!-- 引入数据 -->
+    <div class="bottom-decoration">
+      <span>✨</span>
+      <span>💫</span>
+      <span>⭐</span>
+    </div>
+  </div>
+
+  <!-- 引入数据和脚本 -->
   <script src="../js/data/answerBookData.js"></script>
-  
-  <script>
-    // 页面加载完成后执行
-    document.addEventListener('DOMContentLoaded', async function() {
-      // 定义要替换的占位符
-      const replacements = {
-        'PAGE_TITLE': '答案之书 - 求职版',
-        'DECORATION_EMOJI': '🌸',
-        'BOOK_TYPE': '求职',
-        'TOTAL_PAGES': '412',
-        'INTERPRETATION_ICON': '💖'
-      };
-      
-      try {
-        // 加载模板
-        await TemplateLoader.loadTemplate('../components/answer-book-template.html', replacements, '#template-container');
-        
-        // 模板加载完成后，初始化页面脚本
-        // 注意：这里需要确保answer-book.js中的代码在模板加载完成后执行
-        const script = document.createElement('script');
-        script.src = '../assets/js/answer-book.js';
-        document.body.appendChild(script);
-      } catch (error) {
-        console.error('加载模板失败:', error);
-        // 如果模板加载失败，显示错误信息
-        document.getElementById('template-container').innerHTML = `
-          <div style="text-align: center; padding: 50px; color: #ff6b8b;">
-            <h2>加载失败</h2>
-            <p>无法加载页面模板，请刷新页面重试。</p>
-          </div>
-        `;
-      }
-    });
-  </script>
+  <script src="../assets/js/answer-book.js"></script>
 </body>
 </html>

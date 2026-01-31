@@ -8,70 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/common.css">
-  <style>
-    /* 首页特定样式 */
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 400px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .nav-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff8ab5 0%, #ff5c8a 100%);
-      color: white;
-      padding: 16px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 18px;
-      text-align: center;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .nav-button:hover {
-      box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
-      transform: translateY(-2px);
-    }
-    
-    .nav-button:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-    }
-    
-    .nav-button:hover:after {
-      left: 100%;
-    }
-    
-    /* 响应式设计调整 */
-    @media (max-width: 768px) {
-      .nav-button {
-        padding: 14px 16px;
-        font-size: 16px;
-      }
-    }
-    
-    @media (max-width: 375px) {
-      .nav-button {
-        padding: 12px 16px;
-        font-size: 15px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
   <div class="container">
@@ -89,6 +26,7 @@
         <a href="pages/workplaceColleagueTalkingSkillsQuery.html" class="nav-button">职场软拒话术</a>
         <a href="pages/ppmt_iptest.html" class="nav-button">泡泡玛特本命IP测试</a>
         <a href="pages/answerBookJobVersion.html" class="nav-button">答案之书-求职版</a>
+        <a href="pages/answerBookLoveVersion.html" class="nav-button love-button">答案之书-恋爱版 ❤️</a>
       </div>
     </div>
     

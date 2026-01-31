@@ -1,0 +1,78 @@
+/**
+ * 首页特定样式
+ * 包含首页导航按钮和布局的样式定义
+ */
+
+/* 首页按钮容器样式 */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 导航按钮通用样式 */
+.nav-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff8ab5 0%, #ff5c8a 100%);
+  color: white;
+  padding: 16px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-button:hover {
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
+  transform: translateY(-2px);
+}
+
+.nav-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.nav-button:hover:after {
+  left: 100%;
+}
+
+/* 恋爱版按钮特殊样式 */
+.love-button {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+}
+
+.love-button:hover {
+  box-shadow: 0 6px 15px rgba(255, 20, 147, 0.4);
+}
+
+/* 响应式设计调整 */
+@media (max-width: 768px) {
+  .nav-button {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav-button {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}
