@@ -1,0 +1,271 @@
+/**
+ * 泡泡玛特IP测试样式
+ */
+
+/* 主容器样式 */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 标题样式 */
+h1 {
+  text-align: center;
+  color: #ff6b81;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* 进度条样式 */
+.progress-bar {
+  height: 8px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b81, #ff8e9e);
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* 问题区域样式 */
+.quiz-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.question {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.question-number {
+  display: inline-block;
+  background-color: #ff6b81;
+  color: white;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* 选项样式 */
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.option {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.option.selected {
+  background-color: #ffe6e9;
+  border-color: #ff6b81;
+  box-shadow: 0 5px 15px rgba(255, 107, 129, 0.1);
+}
+
+.option span {
+  display: block;
+  color: #444;
+}
+
+.option strong {
+  color: #ff6b81;
+}
+
+/* 按钮样式 */
+.result-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(90deg, #ff6b81, #ff8e9e);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.result-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 129, 0.2);
+}
+
+.result-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 加载动画 */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 结果区域样式 */
+.result-section {
+  display: none;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.result-section.show {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6b81;
+  margin-bottom: 15px;
+}
+
+.result-ip {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.result-desc {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+/* 分数表格样式 */
+.score-table {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.score-table h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background-color: #f9f9f9;
+}
+
+.score-row.winner {
+  background-color: #ffe6e9;
+  font-weight: bold;
+}
+
+.score-label {
+  color: #444;
+}
+
+.score-value {
+  color: #ff6b81;
+}
+
+/* 重置按钮 */
+.reset-btn {
+  background-color: #f1f1f1;
+  color: #666;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #e5e5e5;
+}
+
+/* 页脚样式 */
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #999;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .question {
+    font-size: 16px;
+  }
+  
+  .option {
+    padding: 12px;
+  }
+  
+  .result-ip {
+    font-size: 24px;
+  }
+}

@@ -3,281 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>趣味职场测试系统 - 首页</title>
+  <title>趣味测试系统 - 首页</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/common.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-    
-    body {
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(135deg, #fff0f6 0%, #ffdeeb 100%);
-      min-height: 100vh;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .container {
-      max-width: 1000px;
-      width: 100%;
-      margin: 0 auto;
-      background: white;
-      border-radius: 24px;
-      box-shadow: 0 10px 40px rgba(255, 105, 180, 0.15);
-      overflow: hidden;
+    /* 首页特定样式 */
+    .buttons-container {
       display: flex;
       flex-direction: column;
-    }
-    
-    .header {
-      background: linear-gradient(135deg, #ff8ab5 0%, #ff5c8a 100%);
-      color: white;
-      padding: 40px 30px;
+      gap: 20px;
+      max-width: 400px;
+      margin: 0 auto;
       text-align: center;
-      position: relative;
     }
     
-    .logo {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 16px rgba(255, 105, 180, 0.25);
-      overflow: hidden;
-    }
-    
-    .logo img {
-      width: 85%;
-      height: 85%;
-      object-fit: contain;
-    }
-    
-    .header h1 {
-      font-size: 32px;
-      margin-bottom: 15px;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .header p {
-      font-size: 16px;
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    
-    .content {
-      padding: 40px;
-      flex: 1;
-    }
-    
-    .intro {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .intro h2 {
-      font-size: 24px;
-      color: #ff5c8a;
-      margin-bottom: 15px;
-    }
-    
-    .intro p {
-      font-size: 16px;
-      color: #666;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .test-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-    
-    .card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.08);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      border: 1px solid #ffe0eb;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.15);
-      border-color: #ffb6c1;
-    }
-    
-    .card-image {
-      height: 160px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-    
-    .card-image::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(255, 105, 180, 0) 0%, rgba(255, 105, 180, 0.3) 100%);
-    }
-    
-    .card-content {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .card-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #ff5c8a;
-      margin-bottom: 10px;
-    }
-    
-    .card-description {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 20px;
-      flex: 1;
-    }
-    
-    .card-button {
+    .nav-button {
       display: inline-block;
       background: linear-gradient(135deg, #ff8ab5 0%, #ff5c8a 100%);
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
+      padding: 16px 20px;
+      border-radius: 12px;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: 600;
+      font-size: 18px;
       text-align: center;
       transition: all 0.3s;
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
-    }
-    
-    .card-button:hover {
-      box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
-      transform: translateY(-2px);
-    }
-    
-    .footer {
-      background: #fff0f6;
-      padding: 20px;
-      text-align: center;
-      color: #ff5c8a;
-      font-size: 14px;
-      border-top: 1px solid #ffe0eb;
-    }
-    
-    /* 增强手机端适配 */
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-      
-      .container {
-        border-radius: 16px;
-      }
-      
-      .header {
-        padding: 25px 15px;
-      }
-      
-      .header h1 {
-        font-size: 24px;
-      }
-      
-      .header p {
-        font-size: 14px;
-      }
-      
-      .content {
-        padding: 25px 15px;
-      }
-      
-      .intro h2 {
-        font-size: 20px;
-      }
-      
-      .intro p {
-        font-size: 14px;
-      }
-      
-      .test-cards {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .logo {
-        width: 80px;
-        height: 80px;
-      }
-      
-      .card-title {
-        font-size: 16px;
-      }
-      
-      .card-description {
-        font-size: 13px;
-      }
-      
-      .card-button {
-        padding: 10px 16px;
-        font-size: 13px;
-      }
-    }
-    
-    /* 额外的小屏幕优化 */
-    @media (max-width: 375px) {
-      .header h1 {
-        font-size: 22px;
-      }
-      
-      .logo {
-        width: 70px;
-        height: 70px;
-      }
-      
-      .content {
-        padding: 20px 12px;
-      }
-    }
-    
-    /* 添加粉色主题的动画效果 */
-    .card-button {
       position: relative;
       overflow: hidden;
     }
     
-    .card-button:after {
+    .nav-button:hover {
+      box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .nav-button:after {
       content: "";
       position: absolute;
       top: 0;
@@ -288,20 +53,23 @@
       transition: 0.5s;
     }
     
-    .card-button:hover:after {
+    .nav-button:hover:after {
       left: 100%;
     }
     
-    /* 添加粉色波浪装饰 */
-    .header:before {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 15px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23ffffff' opacity='.25'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%23ffffff' opacity='.5'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") center bottom no-repeat;
-      background-size: cover;
+    /* 响应式设计调整 */
+    @media (max-width: 768px) {
+      .nav-button {
+        padding: 14px 16px;
+        font-size: 16px;
+      }
+    }
+    
+    @media (max-width: 375px) {
+      .nav-button {
+        padding: 12px 16px;
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -309,60 +77,26 @@
   <div class="container">
     <div class="header">
       <div class="logo">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmNWM4YTt9LmNscy0ye2ZpbGw6I2ZmOGFiNTt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPkRKIExvZ288L3RpdGxlPjxnIGlkPSJMYXllcl8xIiBkYXRhLW5hbWU9IkxheWVyIDEiPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMTI4IiBjeT0iMTI4IiByPSIxMjAiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xOTIsMTEyYTMyLDMyLDAsMCwwLTMyLTMySDk2YTMyLDMyLDAsMCwwLTMyLDMydjMyYTMyLDMyLDAsMCwwLDMyLDMyaDY0YTMyLDMyLDAsMCwwLDMyLTMyWm0tMjQsMzJhMTYsMTYsMCwwLDEtMTYsMTZIOTZhMTYsMTYsMCwwLDEtMTYtMTZWMTEyYTE2LDE2LDAsMCwxLDE2LTE2aDU2YTE2LDE2LDAsMCwxLDE2LDE2WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTEyOCw4MGE0OCw0OCwwLDEsMCw0OCw0OEE0OCw0OCwwLDAsMCwxMjgsODBabTAsMjRhMjQsMjQsMCwxLDEtMjQsMjRBMjQsMjQsMCwwLDEsMTI4LDEwNFoiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEyOCIgY3k9IjEyOCIgcj0iMTIiLz48L2c+PC9zdmc+" alt="DJ Logo">
+        <div class="logo-text">DJ</div>
       </div>
-      <h1>趣味职场测试系统</h1>
-      <p>探索自我，了解职场，提升职业竞争力</p>
+      <h1>趣味测试系统</h1>
+      <p>探索自我</p>
     </div>
     
     <div class="content">
-      <div class="intro">
-        <h2>欢迎来到趣味职场测试系统</h2>
-        <p>这是一个专为职场人士打造的趣味测试平台，通过有趣的测试和工具，帮助您更好地了解自己的职场性格、应对职场挑战，以及探索职业发展方向。选择下方任意测试，开启您的职场自我探索之旅！</p>
-      </div>
-      
-      <div class="test-cards">
-        <div class="card">
-          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-          <div class="card-content">
-            <h3 class="card-title">职场性格测试</h3>
-            <p class="card-description">了解您的职场性格类型，发现自己的职场优势和潜在挑战，找到最适合的工作方式和环境。</p>
-            <a href="workplacePersonalityTest.html" class="card-button">开始测试</a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-          <div class="card-content">
-            <h3 class="card-title">职场问题同事应对话术</h3>
-            <p class="card-description">面对职场中的各类难缠同事，这里有专业的应对话术，让您在职场交流中游刃有余。</p>
-            <a href="workplaceColleagueTalkingSkillsQuery.html" class="card-button">查询话术</a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-          <div class="card-content">
-            <h3 class="card-title">IP测试</h3>
-            <p class="card-description">探索您的职场IP特质，了解如何打造个人品牌，在职场中脱颖而出。</p>
-            <a href="ppmt_iptest.html" class="card-button">开始测试</a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');"></div>
-          <div class="card-content">
-            <h3 class="card-title">答案之书求职版</h3>
-            <p class="card-description">在求职过程中遇到困惑？让神奇的答案之书为您指点迷津，提供求职建议和灵感。</p>
-            <a href="answerBookJobVersion.html" class="card-button">寻求答案</a>
-          </div>
-        </div>
+      <div class="buttons-container">
+        <a href="pages/workplacePersonalityTest.html" class="nav-button">职场性格测试</a>
+        <a href="pages/workplaceColleagueTalkingSkillsQuery.html" class="nav-button">职场软拒话术</a>
+        <a href="pages/ppmt_iptest.html" class="nav-button">泡泡玛特本命IP测试</a>
+        <a href="pages/answerBookJobVersion.html" class="nav-button">答案之书-求职版</a>
       </div>
     </div>
     
     <div class="footer">
-      <p>© 2026 趣味职场测试系统 | 助力职场人士成长的趣味平台</p>
+      <p>© 2026 趣味测试系统 | 助力个人成长的趣味平台</p>
     </div>
   </div>
+
+  <script src="assets/js/common.js"></script>
 </body>
 </html>
