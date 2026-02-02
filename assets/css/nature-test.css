@@ -18,6 +18,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  min-height: 500px; /* 设置最小高度，确保容器有足够空间 */
 }
 
 /* -------------------------------------------------------------
@@ -31,6 +32,7 @@
   justify-content: center;
   padding: 40px;
   text-align: center;
+  min-height: 400px; /* 确保加载界面有一致的高度 */
 }
 
 .loading-spinner {
@@ -53,7 +55,11 @@
  * 测试开始前显示的介绍和说明页面
  * ------------------------------------------------------------- */
 .start-container {
-  padding: 20px;
+  padding: 30px;
+  min-height: 500px; /* 确保开始界面有一致的高度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* 3.1 标题和介绍区域 */
@@ -150,76 +156,271 @@
  * 显示问题和选项的主要测试界面
  * ------------------------------------------------------------- */
 .test-container {
-  padding: 20px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+  min-height: 500px; /* 固定问答页面的最小高度 */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* 确保内边距包含在总高度内 */
+}
+
+/* 新增：测试内容区域，包含问题和选项 */
+.test-content {
+  display: flex;
+  flex-direction: column; /* 确保问题在上，选项在下 */
+  flex-grow: 1;
+  width: 100%;
 }
 
 /* 5.1 进度指示器 */
 .progress-container {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  padding: 10px 5px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  width: 100%;
 }
 
 .progress-bar {
   height: 8px;
   background-color: #f0f0f0;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .progress {
   height: 100%;
-  background-color: #ff6b8b;
-  transition: width 0.3s ease;
+  background: linear-gradient(to right, #ff8da1, #ff6b8b);
+  border-radius: 6px;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .progress-text {
   text-align: right;
   font-size: 14px;
   color: #888;
+  font-weight: 500;
+  padding-right: 5px;
 }
 
 /* 5.2 问题区域 */
 .question-container {
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* 与选项区域的间距 */
+  padding: 18px 22px;
+  background-color: #fef8f9;
+  border-radius: 12px;
+  border-left: 4px solid #ff6b8b;
+  width: 100%; /* 设置固定宽度为600px，不再使用100%自适应 */
+  max-width: 100%; /* 确保在小屏幕上不会溢出 */
+  box-sizing: border-box;
+  min-height: 90px; /* 问题区域的最小高度 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 垂直居中问题文本 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  margin-left: auto; /* 水平居中 */
+  margin-right: auto; /* 水平居中 */
 }
 
 .question-text {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2a2a2a;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  position: relative;
+  padding: 0 0 0 8px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px; /* 从30px增加到45px，增加与选项区域的间距 */
+
+}
+
+/* 添加装饰性引号 */
+.question-text::before {
+  content: "'";
+  position: absolute;
+  left: -15px;
+  top: -5px;
+  font-size: 28px;
+  color: rgba(255, 107, 139, 0.3);
+  font-family: Georgia, serif;
+}
+
+.question-text::after {
+  content: "'";
+  position: relative;
+  margin-left: 5px;
+  font-size: 28px;
+  color: rgba(255, 107, 139, 0.3);
+  font-family: Georgia, serif;
+  line-height: 0;
+  vertical-align: -10px;
+}
+
+/* 添加问题编号样式 */
+.question-number {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff6b8b;
+  background-color: rgba(255, 107, 139, 0.1);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+
+/* 添加问题强调效果 */
+.question-highlight {
+  color: #ff6b8b;
+  font-weight: 700;
+}
+
+/* 添加问题悬停效果 */
+.question-container:hover .question-text {
+  transform: translateX(3px);
+  transition: transform 0.3s ease;
+}
+
+/* 添加动画效果 - 问题出现时的淡入效果 */
+@keyframes fadeInQuestion {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.question-text {
+  animation: fadeInQuestion 0.5s ease-out;
 }
 
 /* 5.3 选项区域 */
 .options-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px; /* 增加选项之间的间距 */
+  width: 100%;
+  flex-grow: 1; /* 允许选项区域占据剩余空间 */
+  order: 2; /* 确保选项区域在问题区域之后 */
 }
 
 .option {
-  padding: 15px;
+  padding: 16px 20px;
   background-color: #f9f9f9;
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 60px; /* 使用最小高度而不是固定高度 */
+  height: auto; /* 允许高度自适应内容 */
+  box-sizing: border-box;
 }
 
 .option:hover {
-  background-color: #f0f0f0;
+  background-color: #f2f2f2;
+  border-color: #e6e6e6;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .option.selected {
   background-color: #ffe5ea;
   border-color: #ffb6c1;
+  box-shadow: 0 2px 10px rgba(255, 107, 139, 0.15);
+}
+
+.option.selected::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #ff6b8b;
+  border-radius: 2px 0 0 2px;
+}
+
+.option:active {
+  transform: translateY(0);
+  transition: all 0.1s ease;
 }
 
 /* 5.4 导航按钮区域 */
 .navigation-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: auto; /* 将导航按钮推到底部 */
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+  width: 100%;
+  margin-top: 30px; /* 确保与选项有足够间距 */
+}
+
+.btn-next, .btn-result {
+  box-shadow: 0 4px 10px rgba(255, 107, 139, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-next:hover, .btn-result:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 107, 139, 0.25);
+}
+
+.btn-next:active, .btn-result:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(255, 107, 139, 0.2);
+}
+
+.btn-next::after, .btn-result::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-next:focus:not(:active)::after, .btn-result:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
 }
 
 /* -------------------------------------------------------------
@@ -229,6 +430,10 @@
 .result-container {
   padding: 30px;
   text-align: center;
+  min-height: 500px; /* 确保结果页面有一致的高度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* 6.1 结果标题 */
@@ -238,18 +443,54 @@
   margin-bottom: 20px;
 }
 
-/* 6.2 结果图片（如有） */
-.result-image {
-  max-width: 200px;
-  margin: 0 auto 20px;
-  border-radius: 10px;
-}
 
-/* 6.3 结果描述文本 */
+/* 6.2 结果描述文本 */
 .result-description {
   color: #555;
-  line-height: 1.6;
+  line-height: 1.8;
   margin-bottom: 30px;
+  padding: 20px 25px;
+  background-color: #fef8f9;
+  border-radius: 10px;
+  border-left: 4px solid #ff6b8b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  text-align: left;
+  position: relative;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 200px; /* 设置结果描述的最小高度 */
+}
+
+.result-description:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 107, 139, 0.15);
+}
+
+.result-description::before {
+  content: "\201C"; /* 使用Unicode编码表示左引号 */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 60px;
+  color: rgba(255, 107, 139, 0.1);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.result-description p {
+  margin-bottom: 15px;
+}
+
+.result-description p:last-child {
+  margin-bottom: 0;
+}
+
+.result-description strong {
+  color: #ff6b8b;
+  font-weight: 600;
 }
 
 /* 6.4 结果页操作按钮 */
@@ -287,10 +528,111 @@
   background-color: #d0d0d0;
 }
 
+
 /* -------------------------------------------------------------
  * 7. 响应式设计
  * 针对不同屏幕尺寸的样式调整
  * ------------------------------------------------------------- */
+
+/* 大屏幕设备 (1200px 及以上) */
+@media (min-width: 1200px) {
+  .nature-test-wrapper {
+    max-width: 900px; /* 在大屏幕上增加容器宽度 */
+    padding: 30px;
+  }
+  
+  .question-container {
+    width: 700px; /* 在大屏幕上增加问题容器宽度 */
+    margin-bottom: 40px; /* 增加与选项之间的间距 */
+  }
+  
+  .question-text {
+    font-size: 22px; /* 在大屏幕上增加问题文字大小 */
+  }
+  
+  .option {
+    padding: 18px 25px; /* 在大屏幕上增加选项内边距 */
+    min-height: 65px; /* 在大屏幕上增加选项最小高度 */
+  }
+  
+  .test-container {
+    padding: 40px; /* 在大屏幕上增加测试容器内边距 */
+  }
+}
+
+/* 中等屏幕设备 (992px 到 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .nature-test-wrapper {
+    max-width: 800px;
+  }
+  
+  .question-container {
+    width: 650px; /* 中等屏幕上的问题容器宽度 */
+  }
+  
+  .test-container {
+    padding: 35px;
+  }
+}
+
+/* 小型桌面屏幕 (768px 到 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .nature-test-wrapper {
+    max-width: 700px;
+    padding: 15px;
+  }
+  
+  .question-container {
+    width: 580px; /* 小型桌面屏幕上的问题容器宽度 */
+    margin-bottom: 35px;
+  }
+  
+  .question-text {
+    font-size: 19px;
+  }
+  
+  .test-container {
+    padding: 25px;
+  }
+  
+  .option {
+    padding: 15px 20px;
+  }
+}
+
+/* 平板设备 (600px 到 767px) */
+@media (min-width: 601px) and (max-width: 767px) {
+  .nature-test-wrapper {
+    max-width: 600px;
+    padding: 12px;
+  }
+  
+  .question-container {
+    width: 520px; /* 平板设备上的问题容器宽度 */
+    margin-bottom: 30px;
+    min-height: 80px;
+  }
+  
+  .question-text {
+    font-size: 18px;
+  }
+  
+  .test-container {
+    padding: 20px;
+    min-height: 480px;
+  }
+  
+  .option {
+    padding: 14px 18px;
+    min-height: 55px;
+  }
+  
+  .btn {
+    padding: 11px 22px;
+  }
+}
+
+/* 手机设备 (600px 及以下) */
 @media (max-width: 600px) {
   /* 7.1 小屏幕布局调整 */
   .nature-test-wrapper {
@@ -304,7 +646,8 @@
   
   /* 7.3 小屏幕元素尺寸调整 */
   .option {
-    padding: 12px;
+    padding: 12px 15px;
+    min-height: 50px; /* 小屏幕上减小选项最小高度 */
   }
   
   .btn {
@@ -314,5 +657,77 @@
   
   .result-title {
     font-size: 20px;
+  }
+  
+  /* 小屏幕结果描述调整 */
+  .result-description {
+    padding: 15px 20px;
+    font-size: 14px;
+    max-width: 95%;
+    min-height: 150px; /* 小屏幕上减小最小高度 */
+  }
+  
+  .result-description::before {
+    font-size: 40px;
+  }
+  
+  /* 小屏幕问题界面调整 */
+  .test-container {
+    padding: 15px;
+    min-height: 450px; /* 小屏幕上减小最小高度 */
+  }
+  
+  .question-container {
+    width: 100%; /* 在手机设备上使用100%宽度 */
+    padding: 15px 18px;
+    margin-bottom: 25px;
+    min-height: 70px; /* 小屏幕上减小问题区域最小高度 */
+  }
+  
+  .options-container {
+    gap: 12px;
+  }
+  
+  .navigation-buttons {
+    margin-top: 25px;
+    padding-top: 12px;
+  }
+  
+  /* 小屏幕上其他容器高度调整 */
+  .start-container, 
+  .result-container, 
+  .nature-test-container {
+    min-height: 450px;
+  }
+  
+  .loading-container {
+    min-height: 350px;
+  }
+}
+
+/* 超小屏幕设备 (375px 及以下) */
+@media (max-width: 375px) {
+  .question-text {
+    font-size: 15px;
+  }
+  
+  .question-container {
+    padding: 12px 15px;
+    min-height: 65px;
+  }
+  
+  .option {
+    padding: 10px 14px;
+    min-height: 45px;
+  }
+  
+  .btn {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+  
+  .test-container {
+    padding: 12px;
+    min-height: 420px;
   }
 }

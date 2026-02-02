@@ -20,7 +20,6 @@ function init() {
   }
   
   // 添加导航按钮事件监听
-  document.getElementById('next-btn').addEventListener('click', nextQuestion);
   document.getElementById('prev-btn').addEventListener('click', prevQuestion);
   document.getElementById('result-btn').addEventListener('click', showResult);
   document.getElementById('restart-btn').addEventListener('click', restartTest);
@@ -82,13 +81,20 @@ function renderQuestion(index) {
     return;
   }
   
-  question.options.forEach((option) => {
+  // 字母数组，用于选项前缀
+  const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+  
+  question.options.forEach((option, optionIndex) => {
     const optionElement = document.createElement('div');
     optionElement.className = 'option';
     if (userAnswers[question.id] === option.value) {
       optionElement.classList.add('selected');
     }
-    optionElement.textContent = option.text;
+    
+    // 添加字母前缀
+    const letterPrefix = optionIndex < letters.length ? letters[optionIndex] : optionIndex + 1;
+    optionElement.textContent = `${letterPrefix}. ${option.text}`;
+    
     optionElement.addEventListener('click', () => selectOption(question.id, option.value));
     optionsContainer.appendChild(optionElement);
   });
@@ -97,11 +103,9 @@ function renderQuestion(index) {
   document.getElementById('prev-btn').disabled = index === 0;
   
   if (index === testData.questions.length - 1) {
-    document.getElementById('next-btn').style.display = 'none';
     document.getElementById('result-btn').style.display = 'block';
     document.getElementById('result-btn').disabled = !userAnswers[question.id];
   } else {
-    document.getElementById('next-btn').style.display = 'block';
     document.getElementById('result-btn').style.display = 'none';
   }
   
@@ -130,10 +134,12 @@ function selectOption(questionId, choice) {
   // 如果是最后一题，启用结果按钮
   if (currentQuestionIndex === testData.questions.length - 1) {
     document.getElementById('result-btn').disabled = false;
+  } else {
+    // 如果不是最后一题，自动跳转到下一题
+    setTimeout(() => {
+      nextQuestion();
+    }, 50);
   }
-  
-  // 启用下一题按钮
-  document.getElementById('next-btn').disabled = false;
 }
 
 /**

@@ -18,6 +18,14 @@ const TEST_VERSIONS = [
     dataFile: 'workplaceTestData.js',
     dataVarName: 'workplaceTestData' // 数据变量名，用于动态加载后引用
   },
+  {
+    id: 'photo-style',
+    title: '自测拍照风格',
+    description: '了解你适合的拍照风格和技巧',
+    dataFile: 'photoStyleTestData.js',
+    dataVarName: 'photoStyleTestData', // 数据变量名，用于动态加载后引用
+  
+  },
   // 可以添加更多测试版本
   {
     id: 'default',
