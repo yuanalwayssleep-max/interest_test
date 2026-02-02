@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>泡泡玛特性格测试</title>
+  <!-- 引入通用样式 -->
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <!-- 引入页面特定样式 -->
+  <link rel="stylesheet" href="../assets/css/nature-test.css">
+  <style id="customStyles">
+  </style>
+</head>
+<body>
+  <!-- 内容容器 -->
+  <div id="app" class="nature-test-wrapper">
+    <!-- 内容将通过JavaScript动态生成 -->
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>正在加载性格测试...</p>
+    </div>
+  </div>
+  
+  <script>
+    // 全局变量，用于存储测试数据
+    let testData = null;
+    let testVersion = '';
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('页面加载开始');
+      
+      try {
+        // 首先加载配置文件
+        loadScript('../js/config/nature-test-versions.js', function() {
+          // 从URL参数获取版本ID
+          const urlParams = new URLSearchParams(window.location.search);
+          testVersion = urlParams.get('version') || 'ppmt-ip'; // 默认为泡泡玛特版
+          console.log('测试版本:', testVersion);
+          
+          // 获取版本配置
+          const versionConfig = TEST_VERSIONS.find(v => v.id === testVersion) || TEST_VERSIONS[0];
+          console.log('版本配置:', versionConfig);
+          
+          // 设置页面标题
+          document.title = versionConfig.title;
+          
+          // 应用自定义样式
+          if (versionConfig.customStyles) {
+            document.getElementById('customStyles').textContent = versionConfig.customStyles;
+          }
+
+          // 动态加载对应的数据文件
+          loadScript(`../js/data/${versionConfig.dataFile}`, function() {
+            console.log(`已加载数据文件: ${versionConfig.dataFile}`);
+            
+            // 获取数据变量
+            testData = window[versionConfig.dataVarName];
+            console.log('数据已加载:', testData);
+            
+            // 生成页面内容
+            generateNatureTest(versionConfig);
+            
+            // 加载主脚本
+            loadScript('../assets/js/nature-test.js', function() {
+              // 初始化性格测试功能
+              console.log('尝试初始化测试');
+              if (typeof init === 'function') {
+                try {
+                  init();
+                  console.log('初始化完成');
+                } catch (error) {
+                  console.error('执行 init() 时出错:', error);
+                }
+              } else {
+                console.error('init 函数未定义');
+              }
+            });
+          });
+        });
+      } catch (error) {
+        console.error('初始化过程中出错:', error);
+      }
+    });
+    
+    // 生成性格测试HTML结构
+    function generateNatureTest(config) {
+      const container = document.getElementById('app');
+      
+      // 生成HTML结构
+      container.innerHTML = `
+        <div class="nature-test-container">
+          <!-- 开始测试界面 -->
+          <div class="start-container">
+            <div class="header">
+              <div class="logo">
+                <div class="logo-text">DJ</div>
+              </div>
+              <h1 class="test-title">${config.title}</h1>
+              <p class="test-description">${config.description}</p>
+            </div>
+            
+            <div class="card">
+              <div class="card-content">
+                <p>宝宝们根据真实感受回答问题即可，没有对错之分～</p>
+                <p>测试共有<span class="question-count">${testData.questions.length}</span>个问题。</p>
+                <button id="start-test-btn" class="btn btn-next">开始测试</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 测试问题界面 -->
+          <div class="test-container" style="display: none;">
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress" style="width: 0%"></div>
+              </div>
+              <div class="progress-text">1/${testData.questions.length}</div>
+            </div>
+            
+            <div class="question-container">
+              <div class="question-text"></div>
+              <div class="options-container"></div>
+            </div>
+            
+            <div class="navigation-buttons">
+              <button id="prev-btn" class="btn btn-prev" disabled>上一题</button>
+              <button id="next-btn" class="btn btn-next">下一题</button>
+              <button id="result-btn" class="btn btn-result" style="display: none;">查看结果</button>
+            </div>
+          </div>
+          
+          <!-- 结果界面 -->
+          <div class="result-container" style="display: none;">
+            <h2 class="result-title"></h2>
+            <div class="result-description"></div>
+            <div class="result-actions">
+              <a href="javascript:void(0)" id="restart-btn" class="restart-button">重新测试</a>
+              <a href="../index.html" class="back-button">返回首页</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    // 动态加载脚本
+    function loadScript(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = callback;
+      script.onerror = function() {
+        console.error(`无法加载脚本: ${src}`);
+      };
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+</html>

@@ -22,8 +22,6 @@
     
     <div class="content">
      
-
-
       <!-- 情感赛道 -->
       <div class="category-section">
         <div class="category-header">
@@ -35,14 +33,14 @@
           <a href="pages/answerBook.html?version=family" class="nav-button">答案之书-亲情版</a>
         </div>
       </div>
-            <!-- 潮玩赛-->
+            <!-- 潮玩赛道 -->
       <div class="category-section">
         <div class="category-header">
           <div class="category-icon">🧸</div>
           <h2 class="category-title">潮玩</h2>
         </div>
         <div class="buttons-container">
-          <a href="pages/ppmt_iptest.html" class="nav-button toy-button">泡泡玛特本命IP测试</a>
+          <a href="pages/natureTest.html?version=ppmt-ip" class="nav-button">泡泡玛特IP测试</a>
         </div>
       </div>
 
@@ -53,19 +51,23 @@
           <h2 class="category-title">职场</h2>
         </div>
         <div class="buttons-container">
-          <a href="pages/workplacePersonalityTest.html" class="nav-button workplace-button">职场性格测试</a>
-          <a href="pages/workplaceColleagueTalkingSkillsQuery.html" class="nav-button workplace-button">职场软拒话术</a>
-          <a href="pages/answerBook.html?version=job" class="nav-button workplace-button">答案之书-职场版</a>
+          <a href="pages/workplaceColleagueTalkingSkillsQuery.html" class="nav-button">职场软拒话术</a>
+          <a href="pages/answerBook.html?version=job" class="nav-button">答案之书-职场版</a>
+          <a href="pages/natureTest.html?version=workplace" class="nav-button">职场性格测试</a>
         </div>
       </div>
 
     </div>
     
     <div class="footer">
-      <p>© 2026 趣味测试系统 | 助力个人成长的趣味平台</p>
+      <p>© <span id="currentYear"></span> 趣味测试系统 | 助力个人成长的趣味平台</p>
     </div>
   </div>
 
   <script src="assets/js/common.js"></script>
+  <script>
+    // 设置当前年份
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
