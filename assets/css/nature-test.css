@@ -11,6 +11,12 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
+  width: 100%; /* 确保容器占满可用宽度 */
+  min-height: 100vh; /* 使wrapper至少占满整个视口高度 */
+  display: flex; /* 启用flexbox布局 */
+  align-items: center; /* 垂直居中内容 */
+  justify-content: center; /* 水平居中内容 */
 }
 
 .nature-test-container {
@@ -19,8 +25,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   min-height: 500px; /* 设置最小高度，确保容器有足够空间 */
+  width: 100%; /* 确保容器占满父元素宽度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
+  margin: auto; /* 在flex容器中进一步确保居中 */
 }
-
 /* -------------------------------------------------------------
  * 2. 加载动画
  * 显示在测试数据加载过程中的动画和提示
@@ -33,6 +41,8 @@
   padding: 40px;
   text-align: center;
   min-height: 400px; /* 确保加载界面有一致的高度 */
+  width: 100%; /* 确保容器占满父元素宽度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .loading-spinner {
@@ -60,12 +70,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: center;
+  width: 100%; /* 确保容器占满父元素宽度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
+  
 }
 
 /* 3.1 标题和介绍区域 */
 .header {
   text-align: center;
   margin-bottom: 30px;
+  width: 100%; /* 确保标题区域占满父元素宽度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .logo {
@@ -103,6 +119,8 @@
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%; /* 确保卡片占满父元素宽度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .card-content {
@@ -164,6 +182,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box; /* 确保内边距包含在总高度内 */
+  width: 100%; /* 确保容器占满父元素宽度 */
 }
 
 /* 新增：测试内容区域，包含问题和选项 */
@@ -172,6 +191,7 @@
   flex-direction: column; /* 确保问题在上，选项在下 */
   flex-grow: 1;
   width: 100%;
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 /* 5.1 进度指示器 */
@@ -181,6 +201,7 @@
   background-color: #fafafa;
   border-radius: 8px;
   width: 100%;
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .progress-bar {
@@ -214,9 +235,9 @@
   background-color: #fef8f9;
   border-radius: 12px;
   border-left: 4px solid #ff6b8b;
-  width: 100%; /* 设置固定宽度为600px，不再使用100%自适应 */
+  width: 100%; /* 使用100%宽度 */
   max-width: 100%; /* 确保在小屏幕上不会溢出 */
-  box-sizing: border-box;
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
   min-height: 90px; /* 问题区域的最小高度 */
   display: flex;
   flex-direction: column;
@@ -238,7 +259,7 @@
   display: inline-block;
   width: 100%;
   margin-bottom: 20px; /* 从30px增加到45px，增加与选项区域的间距 */
-
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 /* 添加装饰性引号 */
@@ -316,6 +337,7 @@
   width: 100%;
   flex-grow: 1; /* 允许选项区域占据剩余空间 */
   order: 2; /* 确保选项区域在问题区域之后 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .option {
@@ -331,7 +353,8 @@
   overflow: hidden;
   min-height: 60px; /* 使用最小高度而不是固定高度 */
   height: auto; /* 允许高度自适应内容 */
-  box-sizing: border-box;
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
+  width: 100%; /* 确保选项占满容器宽度 */
 }
 
 .option:hover {
@@ -372,6 +395,7 @@
   border-top: 1px solid #f0f0f0;
   width: 100%;
   margin-top: 30px; /* 确保与选项有足够间距 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .btn-next, .btn-result {
@@ -434,6 +458,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%; /* 确保容器占满父元素宽度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 /* 6.1 结果标题 */
@@ -462,6 +488,7 @@
   margin-right: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 200px; /* 设置结果描述的最小高度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .result-description:hover {
@@ -499,6 +526,8 @@
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+  width: 100%; /* 确保容器占满父元素宽度 */
+  box-sizing: border-box; /* 确保padding不会增加容器宽度 */
 }
 
 .restart-button, .back-button {
@@ -637,6 +666,14 @@
   /* 7.1 小屏幕布局调整 */
   .nature-test-wrapper {
     padding: 10px;
+    width: 100%; /* 确保在小屏幕上占满宽度 */
+    max-width: 100%; /* 移除最大宽度限制 */
+    box-sizing: border-box; /* 确保padding不会增加容器宽度 */
+  }
+  
+  .nature-test-container {
+    width: 100%; /* 确保容器占满父元素宽度 */
+    margin: 0 auto; /* 水平居中 */
   }
   
   /* 7.2 小屏幕文本大小调整 */
@@ -648,6 +685,7 @@
   .option {
     padding: 12px 15px;
     min-height: 50px; /* 小屏幕上减小选项最小高度 */
+    width: 100%; /* 确保选项占满容器宽度 */
   }
   
   .btn {
@@ -675,6 +713,7 @@
   .test-container {
     padding: 15px;
     min-height: 450px; /* 小屏幕上减小最小高度 */
+    width: 100%; /* 确保容器占满父元素宽度 */
   }
   
   .question-container {
@@ -682,15 +721,18 @@
     padding: 15px 18px;
     margin-bottom: 25px;
     min-height: 70px; /* 小屏幕上减小问题区域最小高度 */
+    box-sizing: border-box; /* 确保padding不会增加容器宽度 */
   }
   
   .options-container {
     gap: 12px;
+    width: 100%; /* 确保选项容器占满父元素宽度 */
   }
   
   .navigation-buttons {
     margin-top: 25px;
     padding-top: 12px;
+    width: 100%; /* 确保导航按钮区域占满父元素宽度 */
   }
   
   /* 小屏幕上其他容器高度调整 */
@@ -698,15 +740,30 @@
   .result-container, 
   .nature-test-container {
     min-height: 450px;
+    width: 100%; /* 确保容器占满父元素宽度 */
+    box-sizing: border-box; /* 确保padding不会增加容器宽度 */
   }
   
   .loading-container {
     min-height: 350px;
+    width: 100%; /* 确保加载容器占满父元素宽度 */
+  }
+  
+  /* 确保卡片在小屏幕上居中 */
+  .card {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box; /* 确保padding不会增加容器宽度 */
   }
 }
 
 /* 超小屏幕设备 (375px 及以下) */
 @media (max-width: 375px) {
+  .nature-test-wrapper {
+    padding: 8px; /* 减小外边距 */
+  }
+  
   .question-text {
     font-size: 15px;
   }
@@ -729,5 +786,23 @@
   .test-container {
     padding: 12px;
     min-height: 420px;
+  }
+  
+  /* 超小屏幕设备上的额外调整 */
+  .result-description {
+    padding: 12px 15px;
+    max-width: 100%; /* 在超小屏幕上使用100%宽度 */
+  }
+  
+  /* 在超小屏幕上调整按钮布局 */
+  .navigation-buttons {
+    flex-direction: column-reverse; /* 在超小屏幕上将按钮垂直排列 */
+    gap: 10px; /* 按钮之间的间距 */
+    align-items: center; /* 居中对齐按钮 */
+  }
+  
+  .btn-prev {
+    margin-right: 0; /* 移除右边距 */
+    margin-top: 10px; /* 添加上边距 */
   }
 }
